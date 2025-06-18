@@ -31,10 +31,10 @@ body {
     /* margin: 1.5rem; */
     padding-bottom: 2rem;
     /* 콘텐츠 영역의 최대 너비를 설정하고 중앙 정렬합니다. */
-    max-width: 100vw; 
+    max-width: 1000px; 
     margin: 0 auto; 
     /* 상하 마진 0, 좌우 마진 auto로 중앙 정렬 */
-    /* padding: 0 20px;  */
+    padding: 0 20px; 
     /* 좌우 20px의 작은 내부 여백을 추가하여 가장자리에 붙지 않게 합니다. */
 }
 
