@@ -24,19 +24,18 @@
 
 html, body{
     background-color: #fff;
-    /* padding: 2rem; */
 }
 
 body {
     width: 70%;
     /* margin: 1.5rem; */
     padding-bottom: 2rem;
-    /* padding-right: 40%;
-    padding-left: 40%; */
     /* 콘텐츠 영역의 최대 너비를 설정하고 중앙 정렬합니다. */
-    /* max-width: 1000px; 예시: 원하는 너비로 조절하세요 */
-    margin: 0 auto; /* 상하 마진 0, 좌우 마진 auto로 중앙 정렬 */
-    padding: 0 20px; /* 좌우 20px의 작은 내부 여백을 추가하여 가장자리에 붙지 않게 합니다. */
+    max-width: 100vw; 
+    margin: 0 auto; 
+    /* 상하 마진 0, 좌우 마진 auto로 중앙 정렬 */
+    /* padding: 0 20px;  */
+    /* 좌우 20px의 작은 내부 여백을 추가하여 가장자리에 붙지 않게 합니다. */
 }
 
 footer {
@@ -138,7 +137,6 @@ li {
     /* 2개의 동일한 너비의 열을 생성합니다. */
     grid-template-columns: repeat(4, 1fr); /* 1fr 1fr 과 동일, 두 개의 열이 동일한 비율로 공간을 나눔 */
     gap: 10px 20px; /* 행 간격 10px, 열 간격 20px (원하는 간격으로 조절) */
-
     padding: 0; /* ul의 기본 패딩 제거 */
     margin: 0; /* ul의 기본 마진 제거 */
 }
