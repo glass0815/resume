@@ -8,12 +8,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <title>Resume: Yuri Jeon</title>
+    
 </head>
 <body>
   <header id="header">
     <!-- 이력서 헤더 : 이름과 타이틀 작성 -->
-    <h1 class="noto-sans-kr-bold-700">전유리</h1>
-    <p class="noto-sans-kr-regular-400">풀 스택 개발자 (Full-Stack Developer)</p>
+    <img class="profile-img" src="./images/profile_picxel3.png" />
+    
+    <div>
+      <h1 class="noto-sans-kr-bold-700">전유리</h1>
+      <p class="noto-sans-kr-regular-400">풀 스택 개발자 (Full-Stack Developer)</p>
+      <p></p>
+    </div>
     <hr>
   </header>
 
@@ -22,6 +28,9 @@
       <section>
         <h2>CONTACT</h2>
         <!-- 소셜 미디어를 비롯한 연락처 정보 -->
+        <a href="https://github.com/glass0815"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a>
+        <img id="copyEmail" data-text="uri0815@gmail.com" src="https://img.shields.io/badge/uri0815@gmail.com-EA4335?style=flat-square&logo=gmail&logoColor=white"/>
+        <p class="font-italic font-italic-small">(클릭하시면 이동 or 복사됩니다.)</p>
       </section>
       <section>
         <h2 class="title">SKILLS</h2>
@@ -332,7 +341,7 @@
             <!-- <p class="font-italic">Jump Juice Bars - Supervisor</p> -->
             <ul>
               <!-- <li>Castleforbes College에서 3개월간 영어 학습</li> -->
-              <li>Jump Juice Bars에서 10개월간 근무</li>
+              <li>Jump Juice Bars에서 10개월간 근무 - Supervisor</li>
             </ul>
           </div>
         </div>
@@ -342,4 +351,20 @@
 
   <footer></footer>
 </body>
+<script>
+      const image = document.getElementById('copyEmail');
+
+      image.addEventListener('click', function() {
+        const textToCopy = this.dataset.text;
+
+        navigator.clipboard.writeText(textToCopy)
+          .then(() => {
+            alert('이메일 복사 완료! ' + textToCopy); 
+          })
+          .catch(err => {
+            console.error('클립보드 복사 실패: ', err);
+            alert('클립보드 복사에 실패했습니다.');
+          });
+      });
+    </script>
 </html>

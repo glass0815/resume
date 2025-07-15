@@ -151,6 +151,9 @@ li {
     /* text-align: left; /* 필요하다면 텍스트 정렬 */
 }
 
+header {
+    display: flex;
+}
 
 
 
@@ -196,4 +199,12 @@ section {
     color:gray; 
     font-style: italic;
     margin-top: 0;
+}
+
+.font-italic-small {
+    font-size: 8px;
+}
+
+.profile-img {
+    width: 250px;
 }
