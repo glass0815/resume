@@ -2,8 +2,6 @@
 /* <uniquifier>: Use a unique and descriptive class name */
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     cursor: url(./images/clover_cursor_nobg.png), auto;
 }
