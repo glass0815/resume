@@ -1,10 +1,10 @@
 /* <weight>: Use a value from 100 to 900 */
 /* <uniquifier>: Use a unique and descriptive class name */
 
-* {
+/* * {
     box-sizing: border-box;
     cursor: url(./images/clover_cursor_nobg.png), auto;
-}
+} */
 
 .noto-sans-kr-light-300 {
   font-family: "Noto Sans KR", sans-serif;
@@ -269,3 +269,98 @@ section {
     width: 40px;
     height: 50px;
 }
+
+
+/* --- Responsive Design --- */
+
+/* For screens smaller than 768px (e.g., tablets, larger phones) */
+@media screen and (max-width: 768px) {
+    body {
+        width: 90%; /* Use more width on smaller screens */
+        padding: 0 15px; /* Slightly less padding */
+    }
+
+    header {
+        flex-direction: column; /* Stack profile image and text vertically */
+        align-items: center; /* Center items horizontally */
+        text-align: center; /* Center text within header */
+    }
+
+    .profile-img {
+        width: 150px; /* Smaller profile image */
+        margin-bottom: 20px; /* Space below image */
+    }
+
+    .div-inline {
+        flex-direction: column; /* Stack left and right divs vertically */
+        align-items: flex-start; /* Align content to the left */
+    }
+
+    .div-inline .left,
+    .div-inline .right,
+    .div-inline .project-left,
+    .div-inline .project-right {
+        flex: 0 0 100%; /* Make them take full width */
+        max-width: 100%; /* Ensure they don't exceed full width */
+        text-align: left; /* Align text to left when stacked */
+        padding-right: 15px; /* Adjust padding */
+        padding-left: 0; /* Remove left padding if not needed */
+    }
+
+    .div-inline .left,
+    .div-inline .project-left {
+        padding-bottom: 10px; /* Add space below sub-titles when stacked */
+        padding-right: 0; /* Remove right padding */
+    }
+
+    .li-horizontal {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for skills */
+        gap: 10px; /* Smaller gap */
+    }
+
+    .keyword-items {
+        flex-wrap: wrap; /* Allow keywords to wrap to next line */
+        justify-content: center; /* Center keyword items */
+    }
+    }
+
+    /* For screens smaller than 480px (e.g., smartphones) */
+    @media screen and (max-width: 480px) {
+    body {
+        width: 95%; /* Even more width on very small screens */
+        padding: 0 10px; /* Minimal padding */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Slightly smaller main heading */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Slightly smaller section headings */
+    }
+
+    h3 {
+        font-size: 1.1rem; /* Slightly smaller sub-headings */
+    }
+
+    .profile-img {
+        width: 120px; /* Even smaller profile image */
+    }
+
+    .li-horizontal {
+        grid-template-columns: repeat(1, 1fr); /* Single column for skills */
+    }
+
+    .keyword-items {
+        gap: 10px; /* Even smaller gap for keywords */
+    }
+
+    .keyword-item p {
+        font-size: 0.8rem; /* Smaller font for keyword text */
+    }
+
+    .keyword-img, .growth-img, .cooperation-img {
+        width: 40px; /* Smaller keyword images */
+        height: 40px;
+    }
+    }
