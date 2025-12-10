@@ -1,11 +1,7 @@
 /* <weight>: Use a value from 100 to 900 */
 /* <uniquifier>: Use a unique and descriptive class name */
 
-/* * {
-    box-sizing: border-box;
-    cursor: url(./images/clover_cursor_nobg.png), auto;
-} */
-
+/* ==================== 기본 설정 ==================== */
 .noto-sans-kr-light-300 {
   font-family: "Noto Sans KR", sans-serif;
   font-optical-sizing: auto;
@@ -27,340 +23,691 @@
   font-style: normal;
 }
 
-html, body{
-    background-color: #fff;
-    /* background-color: #f5f5f5; */
+/* ==================== 색상 변수 정의 ==================== */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --accent-color: #4facfe;
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --bg-light: #f7fafc;
+  --bg-white: #ffffff;
+  --border-light: rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(102, 126, 234, 0.15);
+  --shadow-lg: 0 10px 30px rgba(102, 126, 234, 0.2);
+}
+
+html, body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  scroll-behavior: smooth;
 }
 
 body {
-    /* background-color: #fff; */
-    width: 70%;
-    /* margin: 1.5rem; */
-    /* padding-bottom: 2rem; */
-    /* 콘텐츠 영역의 최대 너비를 설정하고 중앙 정렬합니다. */
-    max-width: 1000px; 
-    margin: 0 auto; 
-    /* 상하 마진 0, 좌우 마진 auto로 중앙 정렬 */
-    padding: 0 20px; 
-    /* 좌우 20px의 작은 내부 여백을 추가하여 가장자리에 붙지 않게 합니다. */
+  width: 70%;
+  max-width: 1000px; 
+  margin: 0 auto; 
+  padding: 0 20px; 
+  color: var(--text-primary);
+  position: relative;
+}
+
+/* 배경 장식 요소 */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: var(--primary-gradient);
+  opacity: 0.03;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -50%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: var(--accent-gradient);
+  opacity: 0.03;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
 }
 
 footer {
-    background-color: #f5f5f5;
-    margin-top: 50px;
-    height: 80px;
+  background: linear-gradient(to right, rgba(102, 126, 234, 0.05), rgba(79, 172, 254, 0.05));
+  margin-top: 80px;
+  height: 100px;
+  border-radius: 20px 20px 0 0;
+  backdrop-filter: blur(10px);
 }
 
+/* ==================== 타이포그래피 ==================== */
 h2, .title {
-    color: #3c78d8;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  font-size: 2rem;
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+  animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 60px;
+  }
 }
 
 .sub-title {
-    color: gray;
+  color: var(--text-secondary);
+  font-weight: 600;
 }
 
 .h3-inline {
-    display: inline;
+  display: inline;
 }
 
 h3 {
-    font-size: 1.2rem;
-    line-height: 1.2;
-    margin-bottom: .5rem;
-    margin-top: 0.5rem;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  margin-bottom: .5rem;
+  margin-top: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 700;
 }
 
 h4 {
-    color:#3c78d8;
-    margin-bottom: 0;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
-h3.skills{
-    font-size: 1.3rem;
+h3.skills {
+  font-size: 1.2rem;
 }
 
 li {
-    font-family: "Noto Sans KR", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--text-secondary);
 }
 
-/* 부모 컨테이너: Flexbox 활성화 */
+/* ==================== 레이아웃 ==================== */
 .div-inline {
-    display: flex;
-    /* flex-wrap: wrap;  필요한 경우에만 사용, 현재는 가로 배치 목적이므로 굳이 필요 없음 */
-    align-items: center;
-    /* align-items: flex-start; */
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease;
 }
 
-/* 왼쪽 div: 전체 공간의 20%를 차지하도록 설정 */
+.div-inline:hover {
+  transform: translateX(5px);
+}
+
 .div-inline .left {
-    flex: 0 0 35%; /* flex-grow: 0 (늘어나지 않음), flex-shrink: 0 (줄어들지 않음), flex-basis: 20% (기본 크기 20%) */
-    max-width: 35%; /* 최대 너비도 20%로 제한 */
-    text-align: right;
-    padding-right: 70px; /* 오른쪽 여백 추가 (h3와 ul 사이 간격) */
-    box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
-    /* margin: auto; */
+  flex: 0 0 35%;
+  max-width: 35%;
+  text-align: right;
+  padding-right: 70px;
+  box-sizing: border-box;
 }
 
-/* 오른쪽 div: 나머지 공간 (80%)을 차지하도록 설정 */
 .div-inline .right {
-    flex: 1; /* flex-grow: 1 (남은 공간을 모두 차지), flex-shrink: 1 (필요 시 줄어듦) */
-    /* flex-basis는 auto가 되며, 남은 공간을 유연하게 채움 */
-    max-width: 70%; /* 최대 너비도 70%로 제한 */
-
-    position: relative;
-    width: 100%; /* flex 속성을 사용하면 이 width는 크게 의미 없어집니다. */
-    padding-right: 15px;
-    padding-left: 20px;
-    box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
+  flex: 1;
+  max-width: 70%;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 20px;
+  box-sizing: border-box;
 }
 
-/* 왼쪽 div: 전체 공간의 20%를 차지하도록 설정 */
 .div-inline .project-left {
-    flex: 0 0 20%; /* flex-grow: 0 (늘어나지 않음), flex-shrink: 0 (줄어들지 않음), flex-basis: 20% (기본 크기 20%) */
-    max-width: 20%; /* 최대 너비도 20%로 제한 */
-    text-align: right;
-    padding-right: 20px; /* 오른쪽 여백 추가 (h3와 ul 사이 간격) */
-    box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
-    /* margin: auto; */
+  flex: 0 0 20%;
+  max-width: 20%;
+  text-align: right;
+  padding-right: 20px;
+  box-sizing: border-box;
 }
 
-/* 오른쪽 div: 나머지 공간 (80%)을 차지하도록 설정 */
 .div-inline .project-right {
-    flex: 1; /* flex-grow: 1 (남은 공간을 모두 차지), flex-shrink: 1 (필요 시 줄어듦) */
-    /* flex-basis는 auto가 되며, 남은 공간을 유연하게 채움 */
-    max-width: 80%; /* 최대 너비도 80%로 제한 */
-    position: relative;
-    width: 100%; /* flex 속성을 사용하면 이 width는 크게 의미 없어집니다. */
-    padding-right: 15px;
-    padding-left: 20px;
-    box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
+  flex: 1;
+  max-width: 80%;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 20px;
+  box-sizing: border-box;
 }
 
 .project-right h3 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
-/* li-horizontal 변경: li 항목들을 여러 열로 세로 라인 맞춰 정렬 */
+/* ==================== Skills 섹션 ==================== */
 .li-horizontal {
-    display: grid; /* !!! Flexbox 대신 Grid 사용 !!! */
-    /* 2개의 동일한 너비의 열을 생성합니다. */
-    grid-template-columns: repeat(4, 1fr); /* 1fr 1fr 과 동일, 두 개의 열이 동일한 비율로 공간을 나눔 */
-    gap: 10px 20px; /* 행 간격 10px, 열 간격 20px (원하는 간격으로 조절) */
-    padding: 0; /* ul의 기본 패딩 제거 */
-    margin: 0; /* ul의 기본 마진 제거 */
-    /* 여기에 추가! Grid 항목들을 세로(교차 축) 중앙에 정렬합니다. */
-    align-items: center;
-    min-height: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  min-height: 50px;
 }
-
-
 
 .li-horizontal li {
-    /* Grid 아이템이 되면 width, margin-right 등은 더 이상 필요 없습니다. */
-    /* Grid가 자동으로 열과 행을 맞춰줍니다. */
-    padding: 0; /* li의 기본 패딩 제거 */
-    margin: 0; /* li의 기본 마진 제거 */
-    /* li 내부의 텍스트나 다른 요소들을 세로 중앙에 정렬하기 위해 li 자체를 플렉스 컨테이너로 만듭니다. */
-    display: flex;
-    align-items: center;
-    /* 만약 li 내부에서 가로로도 중앙 정렬하고 싶다면 아래 주석을 해제하세요. */
-    /* justify-content: center; */
+  padding: 12px 20px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-white);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  font-weight: 600;
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
 }
 
+.li-horizontal li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.li-horizontal li:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.li-horizontal li:hover::before {
+  opacity: 1;
+}
+
+/* ==================== 헤더 스타일 ==================== */
 header {
-    display: flex;
-    margin-top: 50px;
+  display: flex;
+  margin-top: 50px;
+  background: var(--bg-white);
+  padding: 50px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  gap: 40px;
+  align-items: flex-start;
 }
 
+header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: var(--primary-gradient);
+  opacity: 0.05;
+  border-radius: 50%;
+  filter: blur(80px);
+}
 
+header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+header > div > p:first-of-type {
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+header > div > p:last-of-type {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  padding: 25px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(79, 172, 254, 0.05));
+  border-left: 4px solid;
+  border-image: var(--accent-gradient) 1;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+header > div > p:last-of-type strong {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
 
 hr {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border: 0;
-    border-top: 1px solid rgba(0,0,0,.1)
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-light), transparent);
 }
 
+/* ==================== 섹션 스타일 ==================== */
 section {
-    margin-top: 3rem;
+  margin-top: 3.5rem;
+  animation: fadeInUp 0.6s ease-out;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== 배지 스타일 ==================== */
 .badge {
-    display: inline-block;
-    padding: .25em .4em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25rem;
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 50px;
+  transition: all 0.3s ease;
 }
 
 .badge-info {
-    color: #fff;
-    background-color: #17a2b8;
+  color: white;
+  background: var(--accent-gradient);
+  box-shadow: 0 2px 8px rgba(79, 172, 254, 0.3);
 }
 
 .badge-primary {
-    color: #fff;
-    background-color: #007bff;
+  color: white;
+  background: var(--secondary-gradient);
+  box-shadow: 0 2px 8px rgba(240, 147, 251, 0.3);
 }
 
 .badge-secondary {
-    color: #fff;
-    background-color: #6c757d;
+  color: var(--text-primary);
+  background: rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  font-weight: 600;
 }
 
+.badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* ==================== 기타 스타일 ==================== */
 .font-italic {
-    color:gray; 
-    font-style: italic;
-    margin-top: 0;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: 0;
 }
 
 .font-italic-small {
-    font-size: 8px;
+  font-size: 0.85rem;
 }
 
 .profile-img {
-    width: 200px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid transparent;
+  background: var(--primary-gradient);
+  padding: 5px;
+  box-shadow: var(--shadow-lg);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
+.profile-img:hover {
+  transform: scale(1.05) rotate(5deg);
+}
+
+/* ==================== 키워드 섹션 ==================== */
 .keywords-section {
-    /* Optional: Add some top margin if needed to separate from previous content */
-    margin-top: 10px;
+  margin-top: 30px;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(79, 172, 254, 0.08));
+  border-radius: 16px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.keywords-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  padding: 2px;
+  background: var(--primary-gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.3;
 }
 
 .keyword-items {
-    display: flex; /* Arrange items horizontally */
-    align-items: center; /* Vertically center items within this container */
-    gap: 20px; /* Space between each keyword-item group */
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
 }
 
 .keyword-item {
-    display: flex; /* Arrange text and image within each item */
-    flex-direction: column; /* Stack text and image vertically */
-    align-items: center; /* Horizontally center text and image within the item */
-    text-align: center; /* Ensure text is centered if it wraps */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 30px;
+  background: var(--bg-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.keyword-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.keyword-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+.keyword-item:hover::before {
+  opacity: 0.1;
 }
 
 .keyword-item p {
-    margin-top: 5px;
-    margin-bottom: 5px; /* Space between keyword text and image */
-    font-weight: bold; /* Make keyword text stand out */
-    font-size: smaller;
-    /* Add any other text styling like font-size, color */
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
 }
 
-.keyword-img {
-    width: 50px; /* Adjust image size as needed */
-    height: 50px; /* Adjust image size as needed */
-    /* Add any other image styling */
+.keyword-img,
+.growth-img,
+.cooperation-img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.keyword-item:hover .keyword-img,
+.keyword-item:hover .growth-img,
+.keyword-item:hover .cooperation-img {
+  transform: scale(1.15) rotate(5deg);
 }
 
 .growth-img {
-    height: 50px;
+  height: 50px;
 }
 
 .cooperation-img {
-    width: 40px;
-    height: 50px;
+  width: 40px;
+  height: 50px;
 }
 
+/* ==================== Contact 섹션 ==================== */
+section a,
+section img[id="copyEmail"] {
+  display: inline-block;
+  margin: 10px 10px 10px 0;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
 
-/* --- Responsive Design --- */
+section a:hover,
+section img[id="copyEmail"]:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
 
-/* For screens smaller than 768px (e.g., tablets, larger phones) */
+#copyEmail {
+  cursor: pointer;
+}
+
+/* ==================== Project 목록 스타일 개선 ==================== */
+.project-right ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.project-right ul li {
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.project-right ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+}
+
+/* ==================== 링크 스타일 ==================== */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* ==================== 반응형 디자인 ==================== */
 @media screen and (max-width: 768px) {
-    body {
-        width: 90%; /* Use more width on smaller screens */
-        padding: 0 15px; /* Slightly less padding */
-    }
+  body {
+    width: 90%;
+    padding: 0 15px;
+  }
 
-    header {
-        flex-direction: column; /* Stack profile image and text vertically */
-        align-items: center; /* Center items horizontally */
-        text-align: center; /* Center text within header */
-    }
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+  }
 
-    .profile-img {
-        width: 150px; /* Smaller profile image */
-        margin-bottom: 20px; /* Space below image */
-    }
+  header h1 {
+    font-size: 2.2rem;
+  }
 
-    .div-inline {
-        flex-direction: column; /* Stack left and right divs vertically */
-        align-items: flex-start; /* Align content to the left */
-    }
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
 
-    .div-inline .left,
-    .div-inline .right,
-    .div-inline .project-left,
-    .div-inline .project-right {
-        flex: 0 0 100%; /* Make them take full width */
-        max-width: 100%; /* Ensure they don't exceed full width */
-        text-align: left; /* Align text to left when stacked */
-        padding-right: 15px; /* Adjust padding */
-        padding-left: 0; /* Remove left padding if not needed */
-    }
+  .div-inline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .div-inline .left,
-    .div-inline .project-left {
-        padding-bottom: 10px; /* Add space below sub-titles when stacked */
-        padding-right: 0; /* Remove right padding */
-    }
+  .div-inline:hover {
+    transform: none;
+  }
 
-    .li-horizontal {
-        grid-template-columns: repeat(2, 1fr); /* Two columns for skills */
-        gap: 10px; /* Smaller gap */
-    }
+  .div-inline .left,
+  .div-inline .right,
+  .div-inline .project-left,
+  .div-inline .project-right {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: left;
+    padding-right: 15px;
+    padding-left: 0;
+  }
 
-    .keyword-items {
-        flex-wrap: wrap; /* Allow keywords to wrap to next line */
-        justify-content: center; /* Center keyword items */
-    }
-    }
+  .div-inline .left,
+  .div-inline .project-left {
+    padding-bottom: 10px;
+    padding-right: 0;
+  }
 
-    /* For screens smaller than 480px (e.g., smartphones) */
-    @media screen and (max-width: 480px) {
-    body {
-        width: 95%; /* Even more width on very small screens */
-        padding: 0 10px; /* Minimal padding */
-    }
+  .li-horizontal {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 
-    h1 {
-        font-size: 1.8rem; /* Slightly smaller main heading */
-    }
+  .keyword-items {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-    h2 {
-        font-size: 1.5rem; /* Slightly smaller section headings */
-    }
+  h2, .title {
+    font-size: 1.6rem;
+  }
+}
 
-    h3 {
-        font-size: 1.1rem; /* Slightly smaller sub-headings */
-    }
+@media screen and (max-width: 480px) {
+  body {
+    width: 95%;
+    padding: 0 10px;
+  }
 
-    .profile-img {
-        width: 120px; /* Even smaller profile image */
-    }
+  header h1 {
+    font-size: 1.8rem;
+  }
 
-    .li-horizontal {
-        grid-template-columns: repeat(1, 1fr); /* Single column for skills */
-    }
+  h2 {
+    font-size: 1.4rem;
+  }
 
-    .keyword-items {
-        gap: 10px; /* Even smaller gap for keywords */
-    }
+  h3 {
+    font-size: 1.1rem;
+  }
 
-    .keyword-item p {
-        font-size: 0.8rem; /* Smaller font for keyword text */
-    }
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
 
-    .keyword-img, .growth-img, .cooperation-img {
-        width: 40px; /* Smaller keyword images */
-        height: 40px;
-    }
-    }
+  .li-horizontal {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .keyword-items {
+    gap: 10px;
+  }
+
+  .keyword-item {
+    padding: 15px 20px;
+  }
+
+  .keyword-item p {
+    font-size: 0.9rem;
+  }
+
+  .keyword-img, 
+  .growth-img, 
+  .cooperation-img {
+    width: 40px;
+    height: 40px;
+  }
+}
