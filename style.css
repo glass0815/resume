@@ -242,7 +242,7 @@ header > div > p:last-of-type {
   color: var(--text-secondary);
   padding: 25px;
   background: rgba(102, 126, 234, 0.05);
-  border-left: 4px solid var(--accent-color);
+  box-shadow: var(--shadow-sm);
   border-radius: 8px;
   margin-top: 20px;
 }
