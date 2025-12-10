@@ -25,9 +25,6 @@
 
 /* ==================== 색상 변수 정의 ==================== */
 :root {
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   --primary-color: #667eea;
   --secondary-color: #764ba2;
   --accent-color: #4facfe;
@@ -42,7 +39,7 @@
 }
 
 html, body {
-  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  background: #f5f7fa;
   scroll-behavior: smooth;
 }
 
@@ -55,49 +52,16 @@ body {
   position: relative;
 }
 
-/* 배경 장식 요소 */
-body::before {
-  content: '';
-  position: fixed;
-  top: -50%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
-  background: var(--primary-gradient);
-  opacity: 0.03;
-  border-radius: 50%;
-  filter: blur(100px);
-  z-index: -1;
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  bottom: -50%;
-  left: -10%;
-  width: 600px;
-  height: 600px;
-  background: var(--accent-gradient);
-  opacity: 0.03;
-  border-radius: 50%;
-  filter: blur(100px);
-  z-index: -1;
-}
-
 footer {
-  background: linear-gradient(to right, rgba(102, 126, 234, 0.05), rgba(79, 172, 254, 0.05));
+  background: #f5f5f5;
   margin-top: 80px;
   height: 100px;
   border-radius: 20px 20px 0 0;
-  backdrop-filter: blur(10px);
 }
 
 /* ==================== 타이포그래피 ==================== */
 h2, .title {
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #3c78d8;
   font-weight: 800;
   font-size: 2rem;
   position: relative;
@@ -112,7 +76,7 @@ h2::after {
   left: 0;
   width: 60px;
   height: 4px;
-  background: var(--accent-gradient);
+  background: var(--accent-color);
   border-radius: 2px;
   animation: slideIn 0.6s ease-out;
 }
@@ -145,10 +109,7 @@ h3 {
 }
 
 h4 {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #3c78d8;
   margin-bottom: 15px;
   font-weight: 700;
   font-size: 1.1rem;
@@ -171,11 +132,6 @@ li {
   display: flex;
   align-items: flex-start;
   margin-bottom: 25px;
-  transition: transform 0.3s ease;
-}
-
-.div-inline:hover {
-  transform: translateX(5px);
 }
 
 .div-inline .left {
@@ -243,31 +199,12 @@ li {
   font-weight: 600;
   color: var(--text-primary);
   position: relative;
-  overflow: hidden;
-}
-
-.li-horizontal li::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--primary-gradient);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
 }
 
 .li-horizontal li:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
   border-color: var(--primary-color);
-  color: white;
-}
-
-.li-horizontal li:hover::before {
-  opacity: 1;
 }
 
 /* ==================== 헤더 스타일 ==================== */
@@ -279,32 +216,15 @@ header {
   border-radius: 24px;
   box-shadow: var(--shadow-lg);
   position: relative;
-  overflow: hidden;
   border: 1px solid var(--border-light);
   gap: 40px;
   align-items: flex-start;
 }
 
-header::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 400px;
-  height: 400px;
-  background: var(--primary-gradient);
-  opacity: 0.05;
-  border-radius: 50%;
-  filter: blur(80px);
-}
-
 header h1 {
   font-size: 2.8rem;
   margin-bottom: 10px;
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-color);
   font-weight: 900;
   letter-spacing: -1px;
 }
@@ -321,18 +241,14 @@ header > div > p:last-of-type {
   line-height: 1.8;
   color: var(--text-secondary);
   padding: 25px;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(79, 172, 254, 0.05));
-  border-left: 4px solid;
-  border-image: var(--accent-gradient) 1;
+  background: rgba(102, 126, 234, 0.05);
+  border-left: 4px solid var(--accent-color);
   border-radius: 8px;
   margin-top: 20px;
 }
 
 header > div > p:last-of-type strong {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent-color);
   font-weight: 800;
 }
 
@@ -372,19 +288,18 @@ section {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 50px;
-  transition: all 0.3s ease;
 }
 
 .badge-info {
-  color: white;
-  background: var(--accent-gradient);
-  box-shadow: 0 2px 8px rgba(79, 172, 254, 0.3);
+  color: #fff;
+  background-color: #17a2b8;
+  box-shadow: 0 2px 8px rgba(23, 162, 184, 0.3);
 }
 
 .badge-primary {
-  color: white;
-  background: var(--secondary-gradient);
-  box-shadow: 0 2px 8px rgba(240, 147, 251, 0.3);
+  color: #fff;
+  background-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
 }
 
 .badge-secondary {
@@ -392,11 +307,6 @@ section {
   background: rgba(102, 126, 234, 0.1);
   border: 1px solid rgba(102, 126, 234, 0.2);
   font-weight: 600;
-}
-
-.badge:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 /* ==================== 기타 스타일 ==================== */
@@ -415,76 +325,39 @@ section {
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid transparent;
-  background: var(--primary-gradient);
-  padding: 5px;
+  object-position: center top;
+  border: 5px solid #667eea;
   box-shadow: var(--shadow-lg);
   flex-shrink: 0;
-  transition: transform 0.3s ease;
-}
-
-.profile-img:hover {
-  transform: scale(1.05) rotate(5deg);
 }
 
 /* ==================== 키워드 섹션 ==================== */
 .keywords-section {
   margin-top: 30px;
-  padding: 30px;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(79, 172, 254, 0.08));
-  border-radius: 16px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  position: relative;
-}
-
-.keywords-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 16px;
-  padding: 2px;
-  background: var(--primary-gradient);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0.3;
 }
 
 .keyword-items {
   display: flex;
-  align-items: center;
-  gap: 25px;
-  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 20px;
+  flex-wrap: nowrap;
 }
 
 .keyword-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 20px 30px;
+  padding: 25px;
   background: var(--bg-white);
   border-radius: 16px;
   box-shadow: var(--shadow-sm);
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
-}
-
-.keyword-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--primary-gradient);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  flex: 1;
+  min-width: 150px;
+  gap: 12px;
 }
 
 .keyword-item:hover {
@@ -492,21 +365,11 @@ section {
   box-shadow: var(--shadow-md);
 }
 
-.keyword-item:hover::before {
-  opacity: 0.1;
-}
-
 .keyword-item p {
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin: 0;
   font-weight: 800;
   font-size: 1.1rem;
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: relative;
-  z-index: 1;
+  color: var(--primary-color);
 }
 
 .keyword-img,
@@ -515,39 +378,43 @@ section {
   width: 50px;
   height: 50px;
   transition: transform 0.3s ease;
-  position: relative;
-  z-index: 1;
 }
 
 .keyword-item:hover .keyword-img,
 .keyword-item:hover .growth-img,
 .keyword-item:hover .cooperation-img {
-  transform: scale(1.15) rotate(5deg);
+  transform: scale(1.15);
 }
 
 .growth-img {
   height: 50px;
+  width: 50px;
 }
 
 .cooperation-img {
-  width: 40px;
+  width: 50px;
   height: 50px;
 }
 
 /* ==================== Contact 섹션 ==================== */
-section a,
+section a img,
 section img[id="copyEmail"] {
   display: inline-block;
   margin: 10px 10px 10px 0;
   transition: all 0.3s ease;
   border-radius: 8px;
   box-shadow: var(--shadow-sm);
+  vertical-align: middle;
 }
 
-section a:hover,
+section a img:hover,
 section img[id="copyEmail"]:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+}
+
+section a::after {
+  display: none;
 }
 
 #copyEmail {
@@ -570,11 +437,63 @@ section img[id="copyEmail"]:hover {
   content: '▸';
   position: absolute;
   left: 0;
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent-color);
   font-weight: 900;
+}
+
+/* 프로젝트 미디어 그리드 */
+.project-media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.project-img,
+.project-video {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-img:hover,
+.project-video:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-video {
+  object-fit: cover;
+}
+
+/* 동영상 컨테이너 (전체 너비) */
+.project-video-wrapper {
+  /* grid-column: 1 / -1; */
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 비율 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-video-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
 }
 
 /* ==================== 링크 스타일 ==================== */
@@ -592,7 +511,7 @@ a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--accent-gradient);
+  background: var(--accent-color);
   transition: width 0.3s ease;
 }
 
@@ -627,10 +546,6 @@ a:hover::after {
   .div-inline {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .div-inline:hover {
-    transform: none;
   }
 
   .div-inline .left,
