@@ -11,6 +11,17 @@
     
 </head>
 <body>
+  <nav class="fixed-nav">
+    <ul>
+      <li><a href="#header" class="nav-link">TOP</a></li>
+      <li><a href="#contact" class="nav-link">CONTACT</a></li>
+      <li><a href="#skills" class="nav-link">SKILLS</a></li>
+      <li><a href="#experience" class="nav-link">EXPERIENCE</a></li>
+      <li><a href="#project" class="nav-link">PROJECT</a></li>
+      <li><a href="#education" class="nav-link">EDUCATION</a></li>
+      <li><a href="#etc" class="nav-link">ETC</a></li>
+    </ul>
+  </nav>
   <header id="header">
     <!-- 이력서 헤더 : 이름과 타이틀 작성 -->
     <img class="profile-img" src="./images/profile_picxel3.png" />
@@ -42,7 +53,7 @@
 
   <main>
     <article id="mainLeft">
-      <section>
+      <section id="contact">
         <h2>CONTACT</h2>
         <!-- 소셜 미디어를 비롯한 연락처 정보 -->
         <a href="https://github.com/glass0815"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a>
@@ -50,7 +61,7 @@
         <p class="font-italic font-italic-small">(클릭하시면 이동 or 복사됩니다.)</p>
       </section>
 
-      <section>
+      <section id="skills">
         <h2 class="title">SKILLS</h2>
         <!-- 스킬 -->
         <div class="div-inline">
@@ -109,7 +120,7 @@
         </div>
       </section>
 
-      <section>
+      <section id="experience">
         <h2>EXPERIENCE</h2>
         <div>
           <h3 class="sub-title h3-inline">2022.10 - 2023.10</h3>
@@ -128,7 +139,7 @@
         </div>
       </section>
 
-      <section>
+      <section id="project">
         <h2>PROJECT</h2>
         <div class="div-inline">
           <div class="project-left">
@@ -197,7 +208,7 @@
             <ul>
               <li>머신러닝 모델 예측을 통한 분석과 시각화 대시보드를 통해, 기업이 쉽게 ESG 성과를 관리할 수 있는 플랫폼 구축</li>
               <li>기존 수작업 기반 ESG 보고의 비효율성을 해결하기 위하여 ESG 데이터 자동 수집·분석·보고할 수 있도록 함</li>
-              <li>전체적인 화면 설계(Figma) 및 기능 정의, 프론트엔드 파트</li>
+              <li>전체적인 화면 설계(Figma) 및 기능 정의, 프론트엔드 파트 담당</li>
               <li>로그인/로그아웃, 계정 정보 수정 및 삭제</li>
               <li>보고서 파일 업로드/다운로드 및 조회</li>
               <li>ESG 데이터 조회 및 수정</li>
@@ -412,7 +423,7 @@
         <hr>
       </section>   
 
-      <section>
+      <section id="education">
         <h2>EDUCATION</h2>
         <div class="div-inline">
           <div class="project-left">
@@ -449,7 +460,7 @@
         <hr>
       </section>
 
-      <section>
+      <section id="etc">
         <h2>ETC</h2>
         <div class="div-inline">
           <div class="project-left">
@@ -468,22 +479,66 @@
     </article>
   </main>
 
-  <!-- <footer></footer> -->
+  <footer></footer>
 </body>
 <script>
-      const image = document.getElementById('copyEmail');
+  const image = document.getElementById('copyEmail');
 
-      image.addEventListener('click', function() {
-        const textToCopy = this.dataset.text;
+  image.addEventListener('click', function() {
+    const textToCopy = this.dataset.text;
 
-        navigator.clipboard.writeText(textToCopy)
-          .then(() => {
-            alert('이메일 복사 완료! ' + textToCopy); 
-          })
-          .catch(err => {
-            console.error('클립보드 복사 실패: ', err);
-            alert('클립보드 복사에 실패했습니다.');
-          });
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        alert('이메일 복사 완료! ' + textToCopy); 
+      })
+      .catch(err => {
+        console.error('클립보드 복사 실패: ', err);
+        alert('클립보드 복사에 실패했습니다.');
       });
-    </script>
+  });
+
+
+  // 네비게이션 활성화 스크립트
+  const sections = document.querySelectorAll('section, header');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function updateActiveNav() {
+    let currentSection = '';
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      
+      if (window.pageYOffset >= sectionTop - 50) {
+        currentSection = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${currentSection}`) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNav);
+  
+  updateActiveNav();
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script>
 </html>

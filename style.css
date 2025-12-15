@@ -53,10 +53,8 @@ body {
 }
 
 footer {
-  background: #f5f5f5;
   margin-top: 80px;
   height: 100px;
-  border-radius: 20px 20px 0 0;
 }
 
 /* ==================== 타이포그래피 ==================== */
@@ -262,7 +260,7 @@ hr {
 
 /* ==================== 섹션 스타일 ==================== */
 section {
-  margin-top: 3.5rem;
+  margin-top: 6rem;
   animation: fadeInUp 0.6s ease-out;
 }
 
@@ -519,7 +517,70 @@ a:hover::after {
   width: 100%;
 }
 
+/* ==================== 고정 네비게이션 ==================== */
+.fixed-nav {
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-white);
+  padding: 30px 25px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+  z-index: 1000;
+  max-width: 200px;
+}
+
+.fixed-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fixed-nav li {
+  margin-bottom: 20px;
+}
+
+.fixed-nav li:last-child {
+  margin-bottom: 0;
+}
+
+.fixed-nav a {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: block;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  padding-left: 15px;
+  margin-left: -15px;
+}
+
+.fixed-nav a::after {
+  display: none;
+}
+
+.fixed-nav a:hover {
+  color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+.fixed-nav a.active {
+  color: var(--primary-color);
+  font-weight: 700;
+  border-left-color: var(--accent-color);
+}
+
+
 /* ==================== 반응형 디자인 ==================== */
+@media screen and (max-width: 1200px) {
+  .fixed-nav {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 768px) {
   body {
     width: 90%;
@@ -626,3 +687,4 @@ a:hover::after {
     height: 40px;
   }
 }
+
